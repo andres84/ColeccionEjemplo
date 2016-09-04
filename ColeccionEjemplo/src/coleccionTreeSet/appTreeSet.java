@@ -40,14 +40,36 @@ public class appTreeSet {
             
         }
         
+        System.out.println("-----------------------------------");
+        
+    Articulo comparaArticulo = new Articulo();
+    
+    TreeSet<Articulo> orden_articulo2 = new TreeSet(comparaArticulo);
+    
+    orden_articulo2.add(articulo1);
+    orden_articulo2.add(articulo2);
+    orden_articulo2.add(articulo3);
+    
+    for(Articulo a2 : orden_articulo2){
+        
+        System.out.println(a2.getDescripcion());
+        
+    }
+        
     }
     
 }
 
-class Articulo implements Comparable<Articulo>{
+class Articulo implements Comparable<Articulo>, Comparator<Articulo>{
 
     private int num;
     private String Desc;
+    
+    public Articulo(){
+        
+        
+        
+    }
 
     public Articulo(int num, String Desc) {
         this.num = num;
@@ -66,6 +88,16 @@ class Articulo implements Comparable<Articulo>{
     public String getDescripcion(){
         
         return Desc;
+        
+    }
+
+    @Override
+    public int compare(Articulo o1, Articulo o2) {
+        
+        String descripcionA=o1.getDescripcion();
+        String descripcionB=o2.getDescripcion();
+        
+        return descripcionA.compareTo(descripcionB);
         
     }
     
